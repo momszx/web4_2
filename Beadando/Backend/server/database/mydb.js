@@ -1,8 +1,8 @@
 var MongoClient =require('mongodb').MongoClient;
 var url = "mongodb+srv://momsz:45TtSckzlyApU0v3@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority";
 var myobj=[
-    {name: 'Gibsz Jakab',address:'Gibszfalva'},
-    {name: 'Teszt Elek',address:'Tesztfalva'}
+    {name: 'Gibsz Jakab',address:'Gibszfalva', dateOfBirth: "1999-05-01"},
+    {name: 'Teszt Elek',address:'Tesztfalva',dateOfBirth: "1995-05-01"}
 ]
 MongoClient.connect(url,function (err,db){
     if(err) throw err;
