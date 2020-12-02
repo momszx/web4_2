@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +9,7 @@ function App() {
       <header>
       </header>
       <body>
-      <ListElements/>
+        <ListElements/>
       </body>
     </div>
   );
