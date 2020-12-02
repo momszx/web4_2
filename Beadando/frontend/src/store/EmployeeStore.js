@@ -23,6 +23,6 @@ export default store;
 
 dispatcher.register(({action,payload})=>{
     if(action !== refresh ) return;
-    store._complexNumbers = payload;
+    store._employees = payload;
     store.emitChange();
 })
