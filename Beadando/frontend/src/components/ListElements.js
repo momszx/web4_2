@@ -16,7 +16,7 @@ class ListElements extends React.Component {
 
     render() {
         return(
-            <div className={"container"}>
+            <div>
                 {this.state.employees.map(({id,name, address, birthData}, index)=>{
                     return(
                         <ListElement id={id} name={name} address={address} birthData={birthData}/>
