@@ -1,6 +1,6 @@
 let MongoClient =require('mongodb').MongoClient;
 let url = "mongodb+srv://momsz:45TtSckzlyApU0v3@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority";
-class dbController {
+/*class dbController {
     Insert(mit) {
         MongoClient.connect(url,function (err,db){
             if(err) throw err;
@@ -29,7 +29,8 @@ class dbController {
             let dbo=db.db("mydb");
             dbo.collection("Employee").find({}).toArray(function (err,result) {
                 if (err) throw err;
-                console.log(result);
+                //console.log(result);
+                return(result);
                 db.close();
             })
         })
@@ -56,5 +57,18 @@ class dbController {
             })
         })
     }
+}*/
+exports.FindAll=function (){
+
+    MongoClient.connect(url,function (err,db){
+        if(err) throw err;
+        let dbo=db.db("mydb");
+        dbo.collection("Employee").find({}).toArray(function (err,result) {
+            if (err) throw err;
+            //console.log(result);
+            db.close();
+            asd= result;
+        })
+    })
+    return asd
 }
-module.exports = {dbController}
