@@ -2,8 +2,7 @@ import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListElements from "./components/ListElements";
-import {RefreshBtn} from "./components/RefreshBtn";
-import {AddElement} from "./components/AddElement";
+import RefreshBtn from "./components/RefreshBtn";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
                     <RefreshBtn/>
                 </div>
                 <div className={"col"}>
-                    <AddElement/>
                 </div>
             </div>
             <div>

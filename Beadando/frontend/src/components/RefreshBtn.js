@@ -1,6 +1,14 @@
 import React , { Component } from 'react'
 import {Button} from "reactstrap";
+import {ActionGetEmployees} from "../actions/ActionGetEmployees";
 
-export const RefreshBtn = () => {
-    return <div><Button className={"btn btn-warning"}>Refresh employees</Button></div>
+class RefreshBtn extends React.Component {
+    handleClick = () => {
+        ActionGetEmployees();
+    }
+
+    render() {
+        return ( <div><Button onClick={() => this.handleClick()} className={"btn btn-warning"}>Refresh employees</Button></div>);
+    }
 }
+export default RefreshBtn
