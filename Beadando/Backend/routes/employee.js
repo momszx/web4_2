@@ -21,47 +21,61 @@ router.get('/', function(req, res, next) {
 /* DELETE element listing. */
 //Delete in id
 router.delete('/delete',function (req,res) {
-  let id = new mongodb.ObjectID("5fc7e52258b20e2a69b041da");
-  MongoClient.connect(url,function (err,db){
-    if(err) throw err;
-    let dbo=db.db("mydb");
-    dbo.collection("Employee").deleteOne(id,function (err,result) {
-      if (err) throw err;
-      console.log(result.insertedCount+" elem törölve");
-      db.close();
-      res.status(200);
+  //let id = new mongodb.ObjectID("5fc7e52258b20e2a69b041da");
+  req.on('data', function(chunk) {
+    let stringToJson=chunk.toString();
+    let json =JSON.parse(stringToJson);
+    let id=new mongodb.ObjectID(json["_id"]);
+    console.log(id);
+    MongoClient.connect(url,function (err,db){
+      if(err) throw err;
+      let dbo=db.db("mydb");
+      dbo.collection("Employee").deleteOne({_id:id},function (err,result) {
+        if (err) throw err;
+        console.log(result.insertedCount+" elem törölve");
+        db.close();
+        res.status(200);
+      })
     })
   })
 });
 /* GET one element listing. */
 //Find one element
 router.get('/findOne',function (req,res) {
-  let id = new mongodb.ObjectID("5fc7e52258b20e2a69b041da");
-  MongoClient.connect(url,function (err,db) {
-    if(err) throw err;
-    let dbo=db.db("mydb");
-    dbo.collection("Employee").find({_id:id}).toArray(function (err,result) {
-      if (err) throw err;
-      console.log(result);
-      db.close();
-      res.send(result);
+  req.on('data', function(chunk) {
+    let stringToJson=chunk.toString();
+    let json =JSON.parse(stringToJson);
+    let id=new mongodb.ObjectID(json["_id"]);
+    console.log(id);
+    MongoClient.connect(url,function (err,db) {
+      if(err) throw err;
+      let dbo=db.db("mydb");
+      dbo.collection("Employee").find({_id:id}).toArray(function (err,result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+        res.send(result);
+      })
     })
   })
 });
 /* Post one element to list. */
 //Add one element
 router.post('/add',function (req,res) {
-  let mit={name: 'Gibsz Jakab Junior',address:'Gibszfalva'}
-  MongoClient.connect(url,function (err,db){
-    if(err) throw err;
-    let dbo= db.db("mydb");
-    dbo.collection("Employee").insertOne(mit,function (err,res){
+  req.on('data', function(chunk) {
+    let stringToJson=chunk.toString();
+    let json =JSON.parse(stringToJson);
+    MongoClient.connect(url,function (err,db){
       if(err) throw err;
-      console.log(res.insertedCount+" Elem beillesztve az adatbázisba")
-      db.close();
-      res.status(200);
+      let dbo= db.db("mydb");
+      dbo.collection("Employee").insertOne(json,function (err,res){
+        if(err) throw err;
+        console.log(res.insertedCount+" Elem beillesztve az adatbázisba")
+        db.close();
+
+      })
     })
-  })
+  });
 });
 /* Update one element to list. */
 //Update one element
