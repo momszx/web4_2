@@ -4,7 +4,7 @@ import {Button} from "reactstrap";
 
 function ListElement({id, name, address, birthData}){
         return(
-            <div className={"col"}>
+            <div className={"col pb-5"}>
             <div className={"card text-center"}>
                 <div className={"card-header"}>
                     Employee #ID: {id}
