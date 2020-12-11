@@ -6,32 +6,31 @@ import {Link} from "react-router-dom";
 class LoginButton extends React.Component{
     constructor(props) {
         super(props);
-        this.state={
-            user:null
+        this.state = {
+            user : ""
         }
-        this._updateState = this._updateState.bind(this);
-        this.componentDidMount = this.componentDidMount(this);
+        this.refreshUser = this.refreshUser.bind(this);
     }
-    componentDidMount() {
-        //UserStore.addChangeListener(this._updateState);
 
+    refreshUser(){
+        this.setState({
+            user : UserStore._user
+        })
+    }
+
+    componentDidMount() {
+        UserStore.addOnChangeListener(this.refreshUser);
     }
 
     componentWillUnmount() {
-        UserStore.removeChangeListener(this._updateState);
-
+        UserStore.removeChangeListener(this.refreshUser);
     }
-    _updateState() {
-        this.setState({user: UserStore._user});
-        console.log("state")
-    }
-
     render() {
         return (
             <div>
-                {this.state.user===null ?
+                {this.state.user === "" ?
                     <Link to={"/login"}><a className={"btn btn-primary"}>Login</a></Link>:
-                    <h2>{this.state.user.name}</h2>
+                    <Link to={"/user"}><span className={"navbar-brand"}>{this.state.user.name}</span></Link>
                 }
             </div>
         )

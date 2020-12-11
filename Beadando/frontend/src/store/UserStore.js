@@ -1,8 +1,8 @@
 import {EventEmitter} from 'events'
 import dispatcher from "../dispatcher/Dispatcher";
-import {clearError, showError} from '../dispatcher/ActionConstans';
+import {login} from '../dispatcher/ActionConstans';
 
-class userStore extends EventEmitter{
+class CreateUserStore extends EventEmitter{
 
     _user = null;
 
@@ -18,12 +18,13 @@ class userStore extends EventEmitter{
         this.removeListener('Change',callback);
     }
 }
-const UserStore = new userStore();
+
+const UserStore = new CreateUserStore();
 export default UserStore;
 
 dispatcher.register(({action,payload})=>{
     console.log({action : action, payload : payload});
-    if(action !== showError){
+    if(action !== login){
         return;
     }
     UserStore._user = payload;
