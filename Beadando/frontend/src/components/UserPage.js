@@ -5,7 +5,7 @@ class UserPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:{}
+            user: {}
         }
         this._updateState = this._updateState.bind(this);
     }
@@ -19,13 +19,13 @@ class UserPage extends React.Component {
         UserStore.removeChangeListener(this._updateState);
     }
 
-    _updateState(){
-        this.setState({user : UserStore._user});
+    _updateState() {
+        this.setState({user: UserStore._user});
         console.log("state")
     }
 
     render() {
-        return(
+        return (
             <div>
 
             </div>

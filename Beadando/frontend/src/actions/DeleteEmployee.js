@@ -3,16 +3,13 @@ import dispatcher from '../dispatcher/Dispatcher';
 import * as actionConstants from '../dispatcher/ActionConstans'
 import {ActionGetEmployees} from "./ActionGetEmployees";
 
-export const AddNewEmployee = (value) => {
-    axios.post('/employee/add',
+export const DeleteEmployee = (value) => {
+    console.log(value)
+    axios.delete('/employee/delete',{},
         {
-            name: value.name,
-            address: value.address,
-            dateOfBirth: value.dateOfBirth
+            _id:value.deleteID
         })
         .then((resp) => {
-            console.log("response")
-            console.log(resp)
             ActionGetEmployees();
         })
         .catch((error) => {
