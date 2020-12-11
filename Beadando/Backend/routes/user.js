@@ -1,12 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const MongoClient =require('mongodb').MongoClient;
 const url = "mongodb+srv://momsz:yaKLfIBPPeaFb332@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority"
 const mongodb = require('mongodb');
 
 /* GET user page. */
-router.get('/',(req ,res)=>{
+router.post('/',(req ,res)=>{
   MongoClient.connect(url,function (err,db) {
+    console.log(req.body)
     if (err) throw err;
     let dbo=db.db("mydb");
     dbo.collection("User").findOne(req.body,function (err,result) {
@@ -18,6 +19,7 @@ router.get('/',(req ,res)=>{
 })
 router.post('/add',(req ,res)=>{
   MongoClient.connect(url,function (err,db) {
+
     if (err) throw err;
     let dbo=db.db("mydb");
     dbo.collection("User").insertOne(req.body,function (err,res) {
