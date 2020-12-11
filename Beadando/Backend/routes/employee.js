@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const MongoClient =require('mongodb').MongoClient;
-const url = "mongodb+srv://momsz:45TtSckzlyApU0v3@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority";
+const url = "mongodb+srv://momsz:yaKLfIBPPeaFb332@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority"
 const mongodb = require('mongodb');
 
 /* GET element listing. */
@@ -68,6 +68,7 @@ router.post('/add',(req ,res)=>{
 /* Update one element to list. */
 //Update one element
 router.put('/update',function (req,res) {
+  console.log(req.body)
   let ObjectID = require('mongodb').ObjectID;
   MongoClient.connect(url,function (err,db){
     if(err) throw err;
