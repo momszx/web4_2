@@ -24,4 +24,13 @@ export const loginAction = (value) => {
                 )
             }
         )
-}
+};
+
+export const logoutAction = () => {
+    dispatcher.dispatch(
+        {
+            action: actionConstants.logout,
+            payload: null
+        }
+    )
+};

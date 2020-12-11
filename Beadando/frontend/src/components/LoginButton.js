@@ -1,6 +1,7 @@
 import React from 'react'
 import UserStore from "../store/UserStore";
 import {Link} from "react-router-dom";
+import LogoutBtn from "./LogoutBtn";
 
 
 class LoginButton extends React.Component{
@@ -30,7 +31,10 @@ class LoginButton extends React.Component{
             <div>
                 {this.state.user === "" ?
                     <Link to={"/login"}><a className={"btn btn-primary"}>Login</a></Link>:
-                    <Link to={"/user"}><span className={"navbar-brand"}>{this.state.user.name}</span></Link>
+                    <span>
+                        <Link to={"/user"}><span className={"navbar-brand"}>{this.state.user.name}</span></Link>
+                        <LogoutBtn/>
+                    </span>
                 }
             </div>
         )

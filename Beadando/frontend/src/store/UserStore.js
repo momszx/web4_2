@@ -1,9 +1,9 @@
 import {EventEmitter} from 'events'
 import dispatcher from "../dispatcher/Dispatcher";
-import {login} from '../dispatcher/ActionConstans';
+import {login, logout} from '../dispatcher/ActionConstans';
 
 class CreateUserStore extends EventEmitter{
-    _user = {}
+    _user = ""
 
     emitChange(){
         this.emit('Change');
@@ -23,10 +23,17 @@ const UserStore = new CreateUserStore();
 export default UserStore;
 
 dispatcher.register(({action,payload})=>{
-    console.log({action : action, payload : payload});
     if(action !== login){
         return;
     }
     UserStore._user = payload;
+    UserStore.emitChange();
+});
+
+dispatcher.register(({action,payload})=>{
+    if(action !== logout){
+        return;
+    }
+    UserStore._user = "";
     UserStore.emitChange();
 });

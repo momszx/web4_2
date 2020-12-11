@@ -25,7 +25,6 @@ class ListElements extends React.Component {
 
     _updateState() {
         this.setState({employees: store._employees});
-        console.log("state")
     }
 
     render() {
