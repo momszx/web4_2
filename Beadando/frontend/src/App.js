@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import {MainView} from "./components/views/Main";
 import {LoginView} from "./components/views/Login";
 import LoginButton from "./components/LoginButton";
+import UserPage from "./components/UserPage";
+import {UserView} from "./components/views/User";
 
 function App() {
     return (
@@ -28,6 +30,9 @@ function App() {
                         </Route>
                         <Route path="/login">
                             <LoginView/>
+                        </Route>
+                        <Route path="/user">
+                            <UserView/>
                         </Route>
                     </Switch>
                 </div>

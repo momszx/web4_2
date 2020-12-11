@@ -19,7 +19,8 @@
     "reactstrap": "^8.7.1",
     "web-vitals": "^0.2.4",
     "yup": "^0.31.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-youtube": "^7.13.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,20 +3,20 @@ import dispatcher from "../dispatcher/Dispatcher";
 import {login} from '../dispatcher/ActionConstans';
 
 class CreateUserStore extends EventEmitter{
-
-    _user = null;
+    _user = {}
 
     emitChange(){
         this.emit('Change');
     }
 
     addOnChangeListener(callback){
-        this.addListener('Change', callback);
+        this.addListener('Change',callback);
     }
 
-    removeOnChangeListener(callback){
+    removeChangeListener(callback){
         this.removeListener('Change',callback);
     }
+
 }
 
 const UserStore = new CreateUserStore();
