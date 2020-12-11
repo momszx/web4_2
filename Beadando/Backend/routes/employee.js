@@ -34,9 +34,9 @@ router.delete('/delete',function (req,res) {
         if (err) throw err;
         console.log(result.insertedCount+" elem törölve");
         db.close();
-        res.status(200);
       })
     })
+    res.status(200).send('OK');
   })
 });
 /* GET one element listing. */
@@ -65,6 +65,7 @@ router.post('/add',function (req,res) {
   req.on('data', function(chunk) {
     let stringToJson=chunk.toString();
     let json =JSON.parse(stringToJson);
+    console.log(json);
     MongoClient.connect(url,function (err,db){
       if(err) throw err;
       let dbo= db.db("mydb");
@@ -72,9 +73,9 @@ router.post('/add',function (req,res) {
         if(err) throw err;
         console.log(res.insertedCount+" Elem beillesztve az adatbázisba")
         db.close();
-
       })
     })
+    res.status(200).send('OK');
   });
 });
 /* Update one element to list. */
@@ -88,7 +89,7 @@ router.put('/update',function (req,res) {
     dbo.collection("Employee").updateOne(id,mire,function (err,result) {
       if (err) throw err;
       db.close();
-      res.status(200);
+
     })
   })
 })

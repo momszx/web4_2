@@ -1,13 +1,13 @@
-var MongoClient =require('mongodb').MongoClient;
-var url = "mongodb+srv://momsz:45TtSckzlyApU0v3@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority";
-var myobj=[
-    {name: 'Gibsz Jakab',address:'Gibszfalva', dateOfBirth: "1999-05-01"},
-    {name: 'Teszt Elek',address:'Tesztfalva',dateOfBirth: "1995-05-01"}
-]
+let MongoClient = require('mongodb').MongoClient;
+let url = "mongodb+srv://momsz:45TtSckzlyApU0v3@cluster0.apeyl.mongodb.net/myDatabase?retryWrites=true&w=majority";
+let myobj = [
+    {name: 'Gibsz Jakab', address: 'Gibszfalva', dateOfBirth: "1999-05-01"},
+    {name: 'Teszt Elek', address: 'Tesztfalva', dateOfBirth: "1995-05-01"}
+];
 MongoClient.connect(url,function (err,db){
     if(err) throw err;
     console.log("%cAdatbázis létrehozva",'background: #ffffff; color: #bada55');
-    var dbo= db.db("mydb");
+    let dbo = db.db("mydb");
     dbo.collection("Employee").drop(function (err,delOK){
         if(err) throw err;
         if(delOK){
