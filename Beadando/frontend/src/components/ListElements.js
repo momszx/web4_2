@@ -30,7 +30,7 @@ class ListElements extends React.Component {
             <div>
                 {this.state.employees.map(({_id,name, address, dateOfBirth}, index)=>{
                     return(
-                        <ListElement id={_id} name={name} address={address} birthData={dateOfBirth}/>
+                        <ListElement id={_id} name={name} address={address} dateOfBirth={dateOfBirth}/>
                     );
                 })}
             </div>

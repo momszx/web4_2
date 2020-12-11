@@ -5,13 +5,14 @@ import {ActionGetEmployees} from "./ActionGetEmployees";
 
 export const AddNewEmployee = (value) => {
     console.log(value)
-    axios.post('/add',
+    axios.post('/employee/add',
         {
             name: value.name,
             address: value.address,
             dateOfBirth: value.dateOfBirth
         })
         .then((resp) => {
+            console.log("response")
             console.log(resp)
             ActionGetEmployees();
         })
@@ -20,7 +21,7 @@ export const AddNewEmployee = (value) => {
             dispatcher.dispatch(
                 {
                     action: actionConstants.showError,
-                    payload : `${error.response.status}-${error.response.statusText}: ${error.response.data.message}`
+                    payload : null
                 }
             )
             }
