@@ -18,7 +18,8 @@
     "react-scripts": "4.0.1",
     "reactstrap": "^8.7.1",
     "web-vitals": "^0.2.4",
-    "yup": "^0.31.1"
+    "yup": "^0.31.1",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

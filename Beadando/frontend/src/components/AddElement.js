@@ -1,13 +1,15 @@
 import React , { Component } from 'react'
 import {Formik} from "formik";
 import * as Yup from "yup";
+import {AddNewEmployee} from "../actions/AddNewEmployee";
 
 export const AddElement  = () => (
     <Formik
         initialValues={{name: "", address: "", dateOfBirth:""}}
         onSubmit={(values, {setSubmitting}) => {
             setTimeout(() => {
-                //LoginAction.Login(values);
+                console.log(values)
+                AddNewEmployee(values);
                 setSubmitting(false);
             }, 500);
         }}
@@ -17,7 +19,7 @@ export const AddElement  = () => (
                 .required(),
             address: Yup.string()
                 .required(),
-            DateOfBirth: Yup.date()
+            dateOfBirth: Yup.date()
                 .required()
         })}
     >
@@ -64,18 +66,18 @@ export const AddElement  = () => (
                         )}
                     </div>
                     <div className={"form-group"}>
-                        <label htmlFor="DateOfBirth">Birth date:</label>
+                        <label htmlFor="dateOfBirth">Birth date:</label>
                         <input
-                            name="DateOfBirth"
+                            name="dateOfBirth"
                             type="date"
                             placeholder="Your birth date!"
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={errors.DateOfBirth && touched.DateOfBirth ? "form-control is-invalid" : "form-control"}
+                            className={errors.dateOfBirth && touched.dateOfBirth ? "form-control is-invalid" : "form-control"}
                         />
-                        {errors.DateOfBirth && touched.DateOfBirth && (
-                            <div className={"invalid-feedback"}>{errors.DateOfBirth}</div>
+                        {errors.dateOfBirth && touched.dateOfBirth && (
+                            <div className={"invalid-feedback"}>{errors.dateOfBirth}</div>
                         )}
                     </div>
                     <button type="submit" disabled={isSubmitting} className={"btn btn-primary"}>
