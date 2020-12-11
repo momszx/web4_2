@@ -20,23 +20,16 @@ router.get('/', function(req, res, next) {
 /* DELETE element listing. */
 //Delete in id
 router.delete('/delete',function (req,res) {
-  //let id = new mongodb.ObjectID("5fc7e52258b20e2a69b041da");
-  req.on('data', function(chunk) {
-    let stringToJson=chunk.toString();
-    let json =JSON.parse(stringToJson);
-    let id=new mongodb.ObjectID(json["_id"]);
-    console.log(id);
     MongoClient.connect(url,function (err,db){
       if(err) throw err;
       let dbo=db.db("mydb");
-      dbo.collection("Employee").deleteOne({_id:id},function (err,result) {
+      dbo.collection("Employee").deleteOne(req.body,function (err,result) {
         if (err) throw err;
         console.log(result.insertedCount+" elem törölve");
         db.close();
       })
     })
-    res.status(200).send('OK');
-  })
+    res.status(200).send();
 });
 /* GET one element listing. */
 //Find one element
@@ -45,7 +38,6 @@ router.get('/findOne',function (req,res) {
     let stringToJson=chunk.toString();
     let json =JSON.parse(stringToJson);
     let id=new mongodb.ObjectID(json["_id"]);
-    console.log(id);
     MongoClient.connect(url,function (err,db) {
       if(err) throw err;
       let dbo=db.db("mydb");
@@ -61,7 +53,6 @@ router.get('/findOne',function (req,res) {
 /* Post one element to list. */
 //Add one element
 router.post('/add',(req ,res)=>{
-  console.log(req.body)
   MongoClient.connect(url,function (err,db) {
     if (err) throw err;
     let dbo=db.db("mydb");
@@ -77,22 +68,15 @@ router.post('/add',(req ,res)=>{
 /* Update one element to list. */
 //Update one element
 router.put('/update',function (req,res) {
-  req.on('data', function(chunk) {
-    let id = new mongodb.ObjectID("5fc7e52258b20e2a69b041da");
-    let mire={ $set: {name: "Mickey", address: "Canyon 123" } };
-    let stringToJson=chunk.toString();
-    let json =JSON.parse(stringToJson);
-    console.log(json);
-    /*MongoClient.connect(url,function (err,db){
-      if(err) throw err;
-      let dbo=db.db("mydb");
-      dbo.collection("Employee").updateOne(id,mire,function (err,result) {
+  let ObjectID = require('mongodb').ObjectID;
+  MongoClient.connect(url,function (err,db){
+    if(err) throw err;
+    let dbo=db.db("mydb");
+    dbo.collection("Employee").updateOne({"_id": ObjectID(req.body._id)},{$set:req.body.data} ,function (err,result) {
         if (err) throw err;
         db.close();
-
       })
-    })*/
-    res.status(200).send('OK');
-  })
+    res.status(200).send('OK')
+  });
 })
 module.exports = router;
