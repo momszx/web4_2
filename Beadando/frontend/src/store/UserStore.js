@@ -4,7 +4,7 @@ import {clearError, showError} from '../dispatcher/ActionConstans';
 
 class userStore extends EventEmitter{
 
-    _user = "";
+    _user = null;
 
     emitChange(){
         this.emit('Change');

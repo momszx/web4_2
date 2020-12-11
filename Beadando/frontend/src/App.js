@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import {MainView} from "./components/views/Main";
 import {LoginView} from "./components/views/Login";
+import LoginButton from "./components/LoginButton";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                         <Link to={"/"}><a className="navbar-brand">Employee Lister In React</a></Link>
                         <div className="form-inline">
                             <div>
-                                <Link to={"/login"}><a className={"btn btn-primary"}>Login</a></Link>
+                                <LoginButton/>
                             </div>
                         </div>
                     </nav>
