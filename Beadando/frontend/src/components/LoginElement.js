@@ -1,8 +1,8 @@
-import React , { Component } from 'react'
+import React, {Component} from 'react'
 import {Formik} from "formik";
 import * as Yup from "yup";
 
-export const LoginElement  = () => (
+export const LoginElement = () => (
     <Formik
         initialValues={{email: "", password: ""}}
         onSubmit={(values, {setSubmitting}) => {
@@ -41,7 +41,7 @@ export const LoginElement  = () => (
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={ errors.email && touched.email ? "form-control is-invalid" : "form-control"}
+                            className={errors.email && touched.email ? "form-control is-invalid" : "form-control"}
                         />
                         {errors.email && touched.email && (
                             <div className={"invalid-feedback"}>{errors.email} </div>

@@ -4,7 +4,6 @@ import * as actionConstants from '../dispatcher/ActionConstans'
 import {ActionGetEmployees} from "./ActionGetEmployees";
 
 export const AddNewEmployee = (value) => {
-    console.log(value)
     axios.post('/employee/add',
         {
             name: value.name,
@@ -17,13 +16,13 @@ export const AddNewEmployee = (value) => {
             ActionGetEmployees();
         })
         .catch((error) => {
-            console.log(error);
-            dispatcher.dispatch(
-                {
-                    action: actionConstants.showError,
-                    payload : null
-                }
-            )
+                console.log(error);
+                dispatcher.dispatch(
+                    {
+                        action: actionConstants.showError,
+                        payload: null
+                    }
+                )
             }
         )
 }

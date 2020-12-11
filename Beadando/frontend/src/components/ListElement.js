@@ -1,21 +1,23 @@
 import React from 'react'
 import {Button} from "reactstrap";
+import ModifyElement from "./ModifyElement";
+import DeleteElement from "./DeleteElement";
 
 class ListElement extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             element: {
-                id : this.props.id,
-                name : this.props.name,
+                id: this.props.id,
+                name: this.props.name,
                 address: this.props.address,
-                birthData: this.props.birthData
+                birthDate: this.props.birthDate
             }
         }
     }
 
     render() {
-        return(
+        return (
             <div className={"col pb-5"}>
                 <div className={"card text-center"}>
                     <div className={"card-header"}>
@@ -31,16 +33,18 @@ class ListElement extends React.Component {
                                     <p className={"card-text"}>{this.state.element.address}</p>
                                 </div>
                                 <div className="col-sm">
-                                    <Button className={"btn btn-danger"}>Delete employee</Button>
+                                    <DeleteElement deleteID={this.state.element.id} name={this.state.element.name}/>
                                 </div>
                                 <div className="col-sm">
-                                    <Button className={"btn btn-success"}>Modify employee</Button>
+                                    <ModifyElement name={this.state.element.name} address={this.state.element.address}
+                                                   dateOfBirth={this.state.element.birthDate}
+                                                   modifyID={this.state.element.id}/>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className={"card-footer text-muted"}>
-                        Birth date: {this.state.element.birthData}
+                        Birth date: {this.state.element.birthDate}
                     </div>
                 </div>
             </div>
