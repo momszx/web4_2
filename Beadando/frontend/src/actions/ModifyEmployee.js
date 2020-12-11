@@ -4,7 +4,7 @@ import * as actionConstants from '../dispatcher/ActionConstans'
 import {ActionGetEmployees} from "./ActionGetEmployees";
 
 export const ModifyEmployee = (value) => {
-    console.log(value)
+    axios.defaults.timeout = 1500;
     axios.put('/employee/update',
         {
             _id:value.modifyID,

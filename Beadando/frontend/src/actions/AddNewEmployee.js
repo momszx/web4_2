@@ -4,6 +4,7 @@ import * as actionConstants from '../dispatcher/ActionConstans'
 import {ActionGetEmployees} from "./ActionGetEmployees";
 
 export const AddNewEmployee = (value) => {
+    axios.defaults.timeout = 1500;
     axios.post('/employee/add',
         {
             name: value.name,
