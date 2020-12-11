@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import {Button} from "reactstrap";
 import * as Yup from "yup";
 import {Formik} from "formik";
+import {ModifyEmployee} from "../actions/ModifyEmployee";
 
 const customStyles = {
     content: {
@@ -46,6 +47,7 @@ class ModifyElement extends React.Component {
                 <Button onClick={this.handleOpenModal} className={"btn btn-success"}>Modify employee</Button>
                 <ReactModal
                     isOpen={this.state.showModal}
+                    ariaHideApp={false}
                     contentLabel="Add employee"
                     style={customStyles}
                 >
@@ -55,11 +57,12 @@ class ModifyElement extends React.Component {
                         <Formik
                             initialValues={{
                                 name: this.state.user.name, address: this.state.user.address,
-                                dateOfBirth: this.state.user.dateOfBirth
+                                dateOfBirth: this.state.user.dateOfBirth, modifyID: this.state.user.modifyID
                             }}
                             onSubmit={(values, {setSubmitting}) => {
                                 setTimeout(() => {
-                                    //LoginAction.Login(values);
+                                    ModifyEmployee(values);
+                                    this.setState({showModal : false})
                                     setSubmitting(false);
                                 }, 500);
                             }}

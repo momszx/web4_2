@@ -2,6 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import {Button} from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {DeleteEmployee} from "../actions/DeleteEmployee";
 
 const customStyles = {
     content: {
@@ -37,11 +38,17 @@ class DeleteElement extends React.Component {
         this.setState({showModal: false});
     }
 
+    handleClick() {
+        console.log('The link was clicked.');
+        //DeleteEmployee({user})
+    }
+
     render() {
         return (
             <div>
                 <Button onClick={this.handleOpenModal} className={"btn btn-danger"}>Delete employee</Button>
                 <ReactModal
+                    ariaHideApp={false}
                     isOpen={this.state.showModal}
                     contentLabel="Delete employee"
                     style={customStyles}
@@ -51,7 +58,7 @@ class DeleteElement extends React.Component {
                             <h5 className="card-title">Delete this employee: {this.state.user.userName}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">#ID:{this.state.user.deleteID}</h6>
                             <p className="card-text">This user will be permanently deleted!</p>
-                            <button onClick={this.handleCloseModal} className={"btn btn-danger card-link"}>Delete
+                            <button onClick={this.handleClick} className={"btn btn-danger card-link"}>Delete
                             </button>
                             <button onClick={this.handleCloseModal} className={"btn btn-primary card-link"}>Cancel
                             </button>

@@ -11,7 +11,7 @@ export const AddElement  = () => (
                 console.log(values)
                 AddNewEmployee(values);
                 setSubmitting(false);
-            }, 500);
+            }, 1000);
         }}
 
         validationSchema={Yup.object().shape({

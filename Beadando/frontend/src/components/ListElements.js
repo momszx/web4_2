@@ -10,6 +10,7 @@ class ListElements extends React.Component {
             employees: []
         }
         this._updateState = this._updateState.bind(this);
+        this.componentDidMount = this.componentDidMount(this);
     }
 
     componentDidMount() {
@@ -17,9 +18,9 @@ class ListElements extends React.Component {
         ActionGetEmployees();
     }
 
-
     componentWillUnmount() {
         store.removeChangeListener(this._updateState);
+        ActionGetEmployees();
     }
 
     _updateState() {
@@ -32,7 +33,7 @@ class ListElements extends React.Component {
             <div>
                 {this.state.employees.map(({_id, name, address, dateOfBirth}, index) => {
                     return (
-                        <ListElement id={_id} name={name} address={address} birthDate={dateOfBirth}/>
+                        <ListElement key={_id} id={_id} name={name} address={address} birthDate={dateOfBirth}/>
                     );
                 })}
             </div>
