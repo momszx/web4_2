@@ -28,6 +28,7 @@ class DeleteElement extends React.Component {
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleOpenModal() {
@@ -38,9 +39,9 @@ class DeleteElement extends React.Component {
         this.setState({showModal: false});
     }
 
-    handleClick() {
+    handleClick = (input) => {
         console.log('The link was clicked.');
-        //DeleteEmployee({user})
+        DeleteEmployee(input)
     }
 
     render() {
@@ -58,7 +59,7 @@ class DeleteElement extends React.Component {
                             <h5 className="card-title">Delete this employee: {this.state.user.userName}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">#ID:{this.state.user.deleteID}</h6>
                             <p className="card-text">This user will be permanently deleted!</p>
-                            <button onClick={this.handleClick} className={"btn btn-danger card-link"}>Delete
+                            <button onClick={() => this.handleClick(this.state.user.deleteID)} className={"btn btn-danger card-link"}>Delete
                             </button>
                             <button onClick={this.handleCloseModal} className={"btn btn-primary card-link"}>Cancel
                             </button>

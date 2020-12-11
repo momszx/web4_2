@@ -2,6 +2,7 @@ import React from 'react'
 import {AddElement} from "../AddElement";
 import ListElements from "../ListElements";
 import DeleteElement from "../DeleteElement";
+import RefreshBtn from "../RefreshBtn";
 
 export const MainView = () => {
     return (
@@ -17,7 +18,15 @@ export const MainView = () => {
             <div className={"col pb-5"}>
                 <div className="card">
                     <div className="card-body">
-                        <h4 className="card-title">List Of Employees</h4>
+                        <div className={"row"}>
+                            <div className={"col"}>
+                                <h4 className="card-title">List Of Employees</h4>
+                            </div>
+                            <div className={"col pull-right"}>
+                                <RefreshBtn/>
+                            </div>
+                            <div className={"pb-5"}/>
+                        </div>
                         <ListElements/>
                     </div>
                 </div>

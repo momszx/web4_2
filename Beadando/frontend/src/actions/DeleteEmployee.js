@@ -4,7 +4,7 @@ import * as actionConstants from '../dispatcher/ActionConstans'
 import {ActionGetEmployees} from "./ActionGetEmployees";
 
 export const DeleteEmployee = (value) => {
-    console.log(value)
+    axios.defaults.timeout = 1500;
     axios.delete('/employee/delete',{},
         {
             _id:value.deleteID
